@@ -3,7 +3,9 @@
 function App() {
 	return (
 		<>
-			<h1 className="text-3xl font-bold underline">Hello E-Store App</h1>
+			<h1 className="text-3xl font-bold underline font-poppins">
+				Hello E-Store App
+			</h1>
 		</>
 	);
 }

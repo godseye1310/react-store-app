@@ -1,13 +1,34 @@
 // import React from "react";
 
+import { BiLogIn } from "react-icons/bi";
+import { FaReact } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
 	return (
-		<div className="navbar bg-base-100">
-			<div className="flex-1">
-				<a className="btn btn-ghost text-xl">ReactStore</a>
+		<nav className="navbar justify-between px-1.5">
+			<div className="flex items-center justify-center gap-x-3 ms-2 md:me-24 ">
+				<FaReact className=" h-8 w-8 text-coral-red animate-spin aniduration" />
+				<span className="self-center text-coral-red text-xl font-bold font-montserrat sm:text-2xl whitespace-nowrap">
+					REACT STORE
+				</span>
 			</div>
-			<div className="flex-none">
-				<div className="dropdown dropdown-end">
+			<div className="form-control max-sm:hidden flex-1">
+				<input
+					type="text"
+					placeholder="Search"
+					className="input input-bordered w-32 rounded-3xl md:w-auto "
+				/>
+			</div>
+			<div className="flex gap-2">
+				<div>
+					<input
+						type="checkbox"
+						value="light"
+						className="toggle theme-controller"
+					/>
+				</div>
+				<div className="cart dropdown dropdown-end">
 					<div
 						tabIndex={0}
 						role="button"
@@ -29,7 +50,7 @@ const Navbar = () => {
 								/>
 							</svg>
 							<span className="badge badge-sm indicator-item">
-								8
+								9
 							</span>
 						</div>
 					</div>
@@ -38,7 +59,7 @@ const Navbar = () => {
 						className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
 					>
 						<div className="card-body">
-							<span className="text-lg font-bold">8 Items</span>
+							<span className="text-lg font-bold">9 Items</span>
 							<span className="text-info">Subtotal: $999</span>
 							<div className="card-actions">
 								<button className="btn btn-primary btn-block">
@@ -48,7 +69,8 @@ const Navbar = () => {
 						</div>
 					</div>
 				</div>
-				<div className="dropdown dropdown-end">
+
+				{/* <div className="profile dropdown dropdown-end">
 					<div
 						tabIndex={0}
 						role="button"
@@ -78,9 +100,17 @@ const Navbar = () => {
 							<a>Logout</a>
 						</li>
 					</ul>
-				</div>
+				</div> */}
+
+				<Link
+					to="/login"
+					className="logbtn btn btn-accent btn-outline btn-sm"
+				>
+					Log in/Register
+					<BiLogIn className="text-xl" />
+				</Link>
 			</div>
-		</div>
+		</nav>
 	);
 };
 

@@ -2,8 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+html,
+body,
+#root {
 	margin: 0;
 	min-width: 320px;
 	min-height: 100%;
 }
+
+.logbtn {
+	@apply text-black !important;
+}
+
+.aniduration {
+	animation-duration: 5s;
+}
+
+.tabs-bordered > .tab {
+	border-bottom-width: 2.5px;
+	border-color: darkslategray;
+}
+
+.tab:is(.tab-active, [aria-selected="true"]):not(.tab-disabled):not(
+		[disabled]
+	) {
+	@apply border-coral-red text-coral-red;
+}
+
+/* .grid-container {
+	display: grid;
+	grid-template-columns: repeat(5, 300px);
+	gap: 16px;
+	justify-content: center;
+}
+@media (max-width: 1450px) {
+	.grid-container {
+		grid-template-columns: repeat(4, 300px);
+	}
+}
+@media (max-width: 1164px) {
+	.grid-container {
+		grid-template-columns: repeat(3, 300px);
+	}
+}
+@media (max-width: 878px) {
+	.grid-container {
+		grid-template-columns: repeat(2, 300px);
+	}
+}
+@media (max-width: 592px) {
+	.grid-container {
+		grid-template-columns: repeat(1, 300px);
+	}
+} */

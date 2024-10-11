@@ -31,7 +31,7 @@ const LoginPage = () => {
 
 	return (
 		<div>
-			<section className="bg-gray-50 dark:bg-gray-900">
+			<section className="">
 				<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
 					<b
 						htmlFor="#"

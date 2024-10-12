@@ -1,10 +1,22 @@
 // import React from "react";
-
-import { BiLogIn } from "react-icons/bi";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { FaReact } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { handleLogout } from "../store/auth-slice";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const Navbar = () => {
+	const dispatch = useDispatch();
+	const { isLoggedIn } = useSelector((state) => state.authState);
+
+	const logoutHandler = () => {
+		signOut(auth);
+
+		dispatch(handleLogout());
+	};
+
 	return (
 		<nav className="navbar justify-between px-1.5">
 			<div className="flex items-center justify-center gap-x-3 ms-2 md:me-24 ">
@@ -105,13 +117,25 @@ const Navbar = () => {
 					</ul>
 				</div> */}
 
-				<Link
-					to="/login"
-					className="logbtn btn btn-accent btn-outline btn-sm"
-				>
-					Log in/Register
-					<BiLogIn className="text-xl" />
-				</Link>
+				{!isLoggedIn && (
+					<Link
+						to="/login"
+						className="logbtn btn btn-accent btn-outline btn-sm"
+					>
+						Log in/Register
+						<BiLogIn className="text-xl" />
+					</Link>
+				)}
+
+				{isLoggedIn && (
+					<button
+						className="logbtn btn btn-accent btn-outline btn-sm"
+						onClick={logoutHandler}
+					>
+						Logout
+						<BiLogOut className="text-xl" />
+					</button>
+				)}
 			</div>
 		</nav>
 	);

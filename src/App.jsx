@@ -1,18 +1,29 @@
-// import React from 'react'
-import {
-	createBrowserRouter,
-	Navigate,
-	RouterProvider,
-} from "react-router-dom";
+import { useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Layout/RootLayout";
-import LoginPage from "./pages/Login";
+
 import Home from "./pages/Home";
 import Categories from "./pages/Categories/Categories";
 import Category from "./pages/Categories/Category";
 import ProductDetails from "./pages/Products/ProductDetails";
 import Products from "./pages/Products/Products";
 import Auth from "./pages/Auth/Auth";
+import { useDispatch, useSelector } from "react-redux";
+import { checkLoginStatus, fetchAndSetUserData } from "./store/auth-slice";
 function App() {
+	const dispatch = useDispatch();
+	const { isLoggedIn, uid } = useSelector((state) => state.authState);
+
+	useEffect(() => {
+		// Check for token and login status on app load
+		dispatch(checkLoginStatus());
+
+		// If logged in, fetch user data
+		if (isLoggedIn && uid) {
+			dispatch(fetchAndSetUserData(uid));
+		}
+	}, [dispatch, isLoggedIn, uid]);
+
 	const router = createBrowserRouter([
 		{
 			path: "/",
@@ -26,10 +37,6 @@ function App() {
 				{
 					path: "login",
 					element: <Auth />,
-				},
-				{
-					path: "signup",
-					element: <LoginPage />,
 				},
 				{
 					path: "products",

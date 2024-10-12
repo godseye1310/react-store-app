@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Carousel from "../components/Carousel";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
@@ -15,7 +15,7 @@ const Home = () => {
 			</h3>
 
 			<div className="flex flex-wrap gap-3 mb-10">
-				<div className="group flex-1 min-w-36 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
+				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
 					<Link
 						to="/categories/laptop"
 						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
@@ -29,7 +29,7 @@ const Home = () => {
 						</span>
 					</Link>
 				</div>
-				<div className="group flex-1 min-w-36 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md  ">
+				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md  ">
 					<Link
 						to="/categories/phone"
 						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
@@ -43,7 +43,7 @@ const Home = () => {
 						</span>
 					</Link>
 				</div>
-				<div className="group flex-1 min-w-36 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
+				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
 					<Link
 						to="/categories/tablet"
 						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
@@ -57,7 +57,7 @@ const Home = () => {
 						</span>
 					</Link>
 				</div>
-				<div className="group flex-1 min-w-36 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
+				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
 					<Link
 						to="/categories/monitor"
 						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
@@ -71,7 +71,7 @@ const Home = () => {
 						</span>
 					</Link>
 				</div>
-				<div className="group flex-1 min-w-36 h-32 card bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md">
+				<div className="group flex-1 min-w-72 h-32 card bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md">
 					<Link
 						to="/categories"
 						className=" flex justify-center h-full w-full items-center gap-3 text-xl font-semibold"

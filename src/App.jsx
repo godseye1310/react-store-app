@@ -11,6 +11,7 @@ import Categories from "./pages/Categories/Categories";
 import Category from "./pages/Categories/Category";
 import ProductDetails from "./pages/Products/ProductDetails";
 import Products from "./pages/Products/Products";
+import Auth from "./pages/Auth/Auth";
 function App() {
 	const router = createBrowserRouter([
 		{
@@ -24,7 +25,7 @@ function App() {
 				},
 				{
 					path: "login",
-					element: <LoginPage />,
+					element: <Auth />,
 				},
 				{
 					path: "signup",

@@ -3,22 +3,29 @@ import { useSelector } from "react-redux";
 
 import ProductCard from "../../components/ProductCard";
 import ScrollToTop from "../../components/ScrollToTop";
+import Skeleton from "../../components/Skeleton";
 
 const Products = () => {
-	const { products } = useSelector((state) => state.products);
+	const { products, loading } = useSelector((state) => state.products);
 	// console.log(products);
 
-	// // Local loading state
-	// const [loading, setLoading] = useState(true);
-	// // Simulate data fetching logic (if fetching products from an API)
-	// React.useEffect(() => {
-	// 	setLoading(true); // Set loading to true before data is processed
+	console.log(loading);
 
-	// 	// Simulate a fetch or data processing delay
-	// 	setTimeout(() => {
-	// 		setLoading(false); // Set loading to false after data is fetched/processed
-	// 	}, 1000); // Adjust timeout as necessary based on actual API timing
-	// }, [products]);
+	// Show loading skeletons when products are loading
+	// if (loading) {
+	// 	return (
+	// 		<div>
+	// 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-6">
+	// 				{/* Show multiple skeletons for the placeholder */}
+	// 				{Array(12)
+	// 					.fill(0)
+	// 					.map((_, index) => (
+	// 						<Skeleton key={index} />
+	// 					))}
+	// 			</div>
+	// 		</div>
+	// 	);
+	// }
 
 	return (
 		<div className="p-3">
@@ -27,9 +34,18 @@ const Products = () => {
 				Products
 			</h1>
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-6">
-				{products.map((product) => (
-					<ProductCard key={product.id} product={product} />
-				))}
+				{!loading &&
+					products.map((product) => (
+						<ProductCard
+							key={product.id}
+							product={product}
+							loading={loading}
+						/>
+					))}
+				{loading &&
+					Array(12)
+						.fill(0)
+						.map((_, index) => <Skeleton key={index} />)}
 			</div>
 		</div>
 	);

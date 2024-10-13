@@ -20,8 +20,10 @@ body,
 }
 
 .tabs-bordered > .tab {
-	border-bottom-width: 2.5px;
+	border-bottom-width: 3px;
 	border-color: darkslategray;
+
+	@apply hover:border-coral-red;
 }
 
 .tab:is(.tab-active, [aria-selected="true"]):not(.tab-disabled):not(

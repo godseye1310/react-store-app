@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
 	products: [],
+	loading: false, // Add loading state
 };
 
 const productSlice = createSlice({
@@ -11,15 +12,21 @@ const productSlice = createSlice({
 	reducers: {
 		setProductsData(state, action) {
 			state.products = action.payload;
+			state.loading = false; // Data fetched, set loading to false
+		},
+		setLoading(state, action) {
+			state.loading = action.payload; // Set loading state
 		},
 	},
 });
 
-export const { setProductsData } = productSlice.actions;
+export const { setProductsData, setLoading } = productSlice.actions;
+
 export default productSlice.reducer;
 
 export const fetchAllProducts = () => {
 	return async (dispatch) => {
+		dispatch(setLoading(true)); // Set loading to true before fetching
 		try {
 			const response = await axios.get(
 				"https://firestore.googleapis.com/v1/projects/react-store-3a6915/databases/(default)/documents/products"

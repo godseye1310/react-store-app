@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Skeleton from "./Skeleton";
 
-const ProductCard = ({ product, loading = false }) => {
+const ProductCard = ({ product, loading }) => {
 	if (loading) {
 		return <Skeleton className="h-[531px] w-full" />;
 	}

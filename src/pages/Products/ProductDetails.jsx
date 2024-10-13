@@ -1,15 +1,34 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop";
+import Skeleton from "../../components/Skeleton";
 
 const ProductDetails = () => {
 	const { productId } = useParams();
+	const dispatch = useDispatch();
+	const { products, loading } = useSelector((state) => state.products);
+	// console.log(products);
 
-	const { products } = useSelector((state) => state.products);
+	if (loading || products.length === 0) {
+		return (
+			<div>
+				<Skeleton />
+			</div>
+		);
+	}
 
 	const product = products.find((product) => product.id === productId);
+	// console.log(product);
+
+	// // If the product isn't found, display a message
+	// if (!product) {
+	// 	return <div>Product not found.</div>;
+	// }
+
+	const imgArr = product.imageUrls.values.map((img) => img.stringValue) || [];
+	console.log(imgArr);
 
 	const handleAddCart = () => {
 		// Add product to cart
@@ -53,7 +72,7 @@ const ProductDetails = () => {
 
 					<div className=" hidden max-sm:block mt-3">
 						<img
-							src={product.imageUrl}
+							src={product.imageUrls.values[0].stringValue}
 							alt={product.productName}
 							className="w-full h-auto object-cover rounded-md mb-4"
 						/>

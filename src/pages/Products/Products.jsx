@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+// import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import ProductCard from "../../components/ProductCard";
@@ -8,8 +8,7 @@ import Skeleton from "../../components/UI/Skeleton";
 const Products = () => {
 	const { products, loading } = useSelector((state) => state.products);
 	// console.log(products);
-
-	console.log(loading);
+	// console.log(loading);
 
 	// Show loading skeletons when products are loading
 	// if (loading) {

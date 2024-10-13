@@ -44,12 +44,23 @@ export const fetchAllProducts = () => {
 				// Loop through fields dynamically
 				for (let key in doc.fields) {
 					const valueType = Object.keys(doc.fields[key])[0]; // Get the type (e.g., stringValue)
-					productData[key] = doc.fields[key][valueType]; // Set the value
+					// Set the value
+					if (valueType === "integerValue") {
+						productData[key] = Number(doc.fields[key][valueType]);
+					} else if (valueType === "arrayValue") {
+						productData[key] = doc.fields[key][
+							valueType
+						].values.map((val) => val.stringValue);
+					} else {
+						productData[key] = doc.fields[key][valueType]; // Set the value
+					}
 				}
 
 				// console.log(productData);
 				return productData;
 			});
+
+			// console.log(transformedData);
 
 			dispatch(setProductsData(transformedData));
 		} catch (error) {

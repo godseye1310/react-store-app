@@ -1,13 +1,13 @@
-import React from "react";
 import { FaStar } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop";
 import Skeleton from "../../components/UI/Skeleton";
 
+import AddtoCart from "../../components/AddtoCart";
+
 const ProductDetails = () => {
 	const { productId } = useParams();
-	const dispatch = useDispatch();
 	const { products, loading } = useSelector((state) => state.products);
 	// console.log(products);
 
@@ -27,38 +27,24 @@ const ProductDetails = () => {
 	// 	return <div>Product not found.</div>;
 	// }
 
-	const imgArr = product.imageUrls.values.map((img) => img.stringValue) || [];
-	console.log(imgArr);
-
-	const handleAddCart = () => {
-		// Add product to cart
-	};
-
 	return (
-		<div className="flex justify-center pb-24 px-3 pt-2">
+		<div className="flex justify-center pb-24 px-3 pt-2 min-h-[calc(100vh-132px)]">
 			<ScrollToTop />
-			<section className=" flex gap-10 bg-white shadow-md rounded-lg p-6  w-full">
-				<div className=" max-sm:hidden">
+			<section className=" flex flex-wrap items-start gap-10 bg-white shadow-md rounded-lg p-6  w-full">
+				<div className=" max-sm:w-full flex-1 min-w-80 md:max-w-xl">
 					<img
-						src={product.imageUrls.values[0].stringValue}
+						src={product.imageUrls[0]}
 						alt={product.title}
 						className="w-full h-auto object-cover rounded-md mb-4"
 						loading="lazy"
 					/>
-					<button
-						className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
-						type="button"
-						onClick={handleAddCart}
-					>
-						Add to Cart
-					</button>
 				</div>
 
-				<div className="">
-					<h1 className="text-3xl font-semibold text-gray-800 mb-2">
+				<div className="flex-1 min-w-">
+					<h1 className="text-5xl font-semibold text-gray-800 mb-2 whitespace-nowrap">
 						{product.productName}
 					</h1>
-					<p className="text-lg text-gray-600 mb-4">
+					<p className="text-3xl text-gray-600 mb-4">
 						Price:{" "}
 						<span className="font-medium">${product.price}</span>
 					</p>
@@ -70,54 +56,61 @@ const ProductDetails = () => {
 						<span> 18,092 ratings and 1,604 reviews</span>
 					</p>
 
-					<div className=" hidden max-sm:block mt-3">
-						<img
-							src={product.imageUrls.values[0].stringValue}
-							alt={product.productName}
-							className="w-full h-auto object-cover rounded-md mb-4"
-						/>
-						<button
-							className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
-							type="button"
-							onClick={handleAddCart}
-						>
-							Add to Cart
-						</button>
+					<div className="mt-12 py-1 w-80">
+						<AddtoCart product={product} />
+
+						<p className="text-[#777] mt-4 text-lg">
+							Stock : ({product.stock})
+						</p>
 					</div>
 
 					<div className="mt-2 flex flex-col pt-6">
-						<h3 className="text-2xl font-semibold">
-							Product Details
+						<h3 className="text-3xl font-montserrat font-semibold">
+							Product Description
 						</h3>
-						<p className="text-[#777] font-medium">
-							Color is a complex and multifaceted concept, with
-							both physical and psychological aspects.
+						<p className="text-[#777] font-medium font-poppins">
+							{product.description}
 						</p>
 
-						<table className="mt-5 p-2">
-							<tbody className=" text-white/75">
-								<tr className=" font-medium box-content odd:bg-black/45 even:bg-gray-300">
-									<td className="px-6 py-2">Color</td>
-									<td className="px-6 py-2">
-										{product.productName}
-									</td>
-								</tr>
-								<tr className=" font-medium box-content odd:bg-black/45 even:bg-gray-500">
-									<td className="px-6 py-2">Pattern</td>
-									<td className="px-6 py-2">
-										fluent {product.productName}
-									</td>
-								</tr>
-								<tr className=" font-medium box-content odd:bg-black/45 even:bg-gray-500">
-									<td className="px-6 py-2">Color code</td>
-									<td className="px-6 py-2">{productId}</td>
-								</tr>
-								<tr className=" font-medium box-content odd:bg-black/45 even:bg-gray-500">
-									<td className="px-6 py-2">Quantity</td>
-									<td className="px-6 py-2">1</td>
-								</tr>
-							</tbody>
-						</table>
+						<h3 className="text-3xl mt-8 font-montserrat font-semibold">
+							Product Details
+						</h3>
+						<div className="rounded-lg bg-gray-500 p-2 mt-4">
+							<table className="">
+								<tbody className=" text-white/75">
+									<tr className=" font-medium box-content odd:bg-black/50 even:bg-gray-500">
+										<td className="px-6 py-2">Name</td>
+										<td className="px-6 py-2">
+											{product.productName}
+										</td>
+									</tr>
+									<tr className=" font-medium box-content odd:bg-black/50 even:bg-gray-500">
+										<td className="px-6 py-2">
+											Description
+										</td>
+										<td className="px-6 py-2">
+											{product.description}
+										</td>
+									</tr>
+									<tr className=" font-medium box-content odd:bg-black/50 even:bg-gray-500">
+										<td className="px-6 py-2">ID</td>
+										<td className="px-6 py-2">
+											{productId}
+										</td>
+									</tr>
+									<tr className=" font-medium box-content odd:bg-black/50 even:bg-gray-500">
+										<td className="px-6 py-2">Size</td>
+										<td className="px-6 py-2">1 Size</td>
+									</tr>
+									<tr className=" font-medium box-content odd:bg-black/50 even:bg-gray-500">
+										<td className="px-6 py-2">Details</td>
+										<td className="px-6 py-2">
+											Other Details...
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</section>

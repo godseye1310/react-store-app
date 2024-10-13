@@ -6,6 +6,19 @@ const ProductCard = ({ product, loading }) => {
 		return <Skeleton className="h-[531px] w-full" />;
 	}
 
+	const handleAddCart = async () => {
+		// Add product to cart
+		const itemData = {
+			productId: product.id,
+			quantity: 1,
+			price: product.price,
+			productName: product.productName,
+			img: product.imageUrls[0],
+		};
+
+		console.log(itemData);
+	};
+
 	return (
 		<div
 			key={product.id}
@@ -14,7 +27,7 @@ const ProductCard = ({ product, loading }) => {
 			<Link to={`/products/${product.id}`}>
 				<figure className="bg-black/10 py-5 w-full ">
 					<img
-						src={product.imageUrls.values[0].stringValue}
+						src={product.imageUrls[0]}
 						alt="Shoes"
 						className="w-full h-80 object-scale-down"
 						loading="lazy"
@@ -30,7 +43,9 @@ const ProductCard = ({ product, loading }) => {
 					<p className="text-xl text-neutral-600 font-bold">
 						${product.price}
 					</p>
-					<button className="btn btn-primary">Add to Cart</button>
+					<button onClick={handleAddCart} className="btn btn-primary">
+						Add to Cart
+					</button>
 				</div>
 			</div>
 		</div>

@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop";
-import Skeleton from "../../components/Skeleton";
+import Skeleton from "../../components/UI/Skeleton";
 
 const ProductDetails = () => {
 	const { productId } = useParams();

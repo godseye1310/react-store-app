@@ -53,7 +53,7 @@ const Footer = () => {
 			<aside className="flex flex-col sm:flex-row gap-6 justify-center sm:justify-between items-center">
 				{/* <!-- Brand --> */}
 				<div className="flex items-center gap-4">
-					<img alt="Logo" src="vite.svg" className="w-10" />
+					<img alt="Logo" src="/vite.svg" className="w-10" />
 					<div>
 						<p className="text-2xl">React-Store</p>
 						<small>Copyright © 2024 - All rights reserved</small>

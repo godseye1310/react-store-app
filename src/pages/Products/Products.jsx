@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import ProductCard from "../../components/ProductCard";
 import ScrollToTop from "../../components/ScrollToTop";
-import Skeleton from "../../components/Skeleton";
+import Skeleton from "../../components/UI/Skeleton";
 
 const Products = () => {
 	const { products, loading } = useSelector((state) => state.products);

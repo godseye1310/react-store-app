@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Skeleton from "./Skeleton";
+import Skeleton from "./UI/Skeleton";
 
 const ProductCard = ({ product, loading }) => {
 	if (loading) {

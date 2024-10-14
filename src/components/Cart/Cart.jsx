@@ -50,7 +50,7 @@ const Cart = () => {
 					<div className="flex justify-between items-center px-3">
 						<div className="flex items-center gap-2">
 							<h2 className="text-2xl font-bold">Cart</h2>
-							<p className="badge badge-secondary">
+							<p className="badge bg-coral-red font-bold font-poppins text-gray-600 pt-0.5">
 								{totalItems}
 							</p>
 						</div>
@@ -66,7 +66,7 @@ const Cart = () => {
 					{/* Cart Content here */}
 					<div className="relative px-0.5 h-[85dvh] bg-neutral-100 overflow-y-auto">
 						{updated && isLoggedIn && (
-							<div className="absolute inset-0 flex justify-center items-center w-full h-full bg-black/60 z-10 rounded">
+							<div className="absolute inset-0 flex justify-center items-center w-full h-full bg-black/35 z-10 rounded">
 								<BiLoaderCircle className="w-8 h-8 animate-spin" />
 							</div>
 						)}

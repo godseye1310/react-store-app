@@ -24,9 +24,12 @@ const Navbar = () => {
 		<nav className="navbar justify-between px-1.5">
 			<div className="flex items-center justify-center gap-x-3 ms-2 md:me-24 ">
 				<FaReact className=" h-8 w-8 text-coral-red animate-spin aniduration" />
-				<span className="self-center text-coral-red text-xl font-bold font-montserrat sm:text-2xl whitespace-nowrap">
-					REACT STORE
-				</span>
+				<h1 className="self-center text-coral-red font-extrabold font-montserrat sm:text-2xl whitespace-nowrap">
+					<span className="px-3 py-1.5 bg-neutral">REACT</span>
+					<span className="px-3 py-1.5 bg-coral-red text-neutral">
+						STORE
+					</span>
+				</h1>
 			</div>
 			<div className="form-control max-sm:hidden flex-1">
 				<input
@@ -103,7 +106,7 @@ const Navbar = () => {
 
 				{isLoggedIn && (
 					<button
-						className="logbtn btn btn-accent btn-outline btn-sm"
+						className="logbtn btn bg-neutral-300 btn-sm hover:bg-neutral-400"
 						onClick={logoutHandler}
 					>
 						<span className="max-xs:hidden">Logout</span>

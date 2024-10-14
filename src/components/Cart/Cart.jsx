@@ -1,14 +1,14 @@
-/* eslint-disable no-constant-binary-expression */
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./CartItem";
-import { useEffect } from "react";
 import { BiLoaderCircle } from "react-icons/bi";
 import { sendCartData } from "../../store/cart-thunk-Actions";
 import { useNavigate } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
 
 const Cart = () => {
 	const dispatch = useDispatch();
-	const navvigate = useNavigate();
+	const navigate = useNavigate();
 	const { cartList, totalItems, totalPrice, updated } = useSelector(
 		(state) => state.cartState
 	);
@@ -16,20 +16,18 @@ const Cart = () => {
 	const { uid, isLoggedIn } = useSelector((state) => state.authState);
 
 	useEffect(() => {
-		console.log("cart rendered on page refresh");
-
-		if (uid && isLoggedIn) {
+		if (uid && isLoggedIn && updated) {
 			dispatch(sendCartData(cartList, totalItems, totalPrice, uid));
 		}
 	}, [updated, cartList, totalItems, totalPrice, uid, dispatch, isLoggedIn]);
-
-	console.log(cartList);
 
 	const handleCheckOut = () => {
 		console.log("checkout", cartList);
 
 		if (!isLoggedIn) {
-			navvigate("/login");
+			navigate("/login");
+		} else {
+			navigate("/checkout");
 		}
 	};
 
@@ -58,9 +56,9 @@ const Cart = () => {
 						</div>
 						<label
 							htmlFor="user-cart-drawer"
-							className="btn btn-outline btn-error btn-sm"
+							className="group btn btn-square btn-error btn-sm"
 						>
-							X
+							<IoClose className="size-6 text-white transition duration-200 group-hover:rotate-90" />
 						</label>
 					</div>
 					<div className="divider my-1"></div>

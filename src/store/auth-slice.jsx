@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
+import { fetchCartData } from "./cart-thunk-Actions";
 
 const initialState = {
 	isLoggedIn: false,
@@ -56,6 +57,7 @@ export default authSlice.reducer;
 export const fetchAndSetUserData = (uid) => {
 	return async (dispatch) => {
 		try {
+			dispatch(fetchCartData(uid));
 			const userData = await getUserDataFromFirestore(uid);
 			//can fetch cart here on user login
 			if (userData) {
@@ -66,6 +68,7 @@ export const fetchAndSetUserData = (uid) => {
 		}
 	};
 };
+
 // helper function to fetch user data from Firestore
 const getUserDataFromFirestore = async (uid) => {
 	try {

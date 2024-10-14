@@ -7,6 +7,7 @@ import { handleLogout } from "../../store/auth-slice";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import CartBtn from "../Cart/CartBtn";
+import { setCart } from "../../store/cart-slice";
 
 const Navbar = () => {
 	const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Navbar = () => {
 		signOut(auth);
 
 		dispatch(handleLogout());
+		dispatch(setCart({ cartList: [], totalItems: 0, totalPrice: 0 }));
 	};
 
 	return (

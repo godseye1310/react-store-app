@@ -1,5 +1,9 @@
 import { useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+	createBrowserRouter,
+	Navigate,
+	RouterProvider,
+} from "react-router-dom";
 import RootLayout from "./pages/Layout/RootLayout";
 
 import Home from "./pages/Home";
@@ -10,6 +14,7 @@ import Products from "./pages/Products/Products";
 import Auth from "./pages/Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { checkLoginStatus, fetchAndSetUserData } from "./store/auth-slice";
+import Checkout from "./pages/Checkout";
 function App() {
 	const dispatch = useDispatch();
 	const { isLoggedIn, uid } = useSelector((state) => state.authState);
@@ -55,11 +60,29 @@ function App() {
 						{ path: ":categoryId", element: <Category /> },
 					],
 				},
-				{ path: "cart", element: <div>Cart</div> },
 
-				{ path: "orders", element: <div>Orders</div> },
-				{ path: "settings", element: <div>Settings</div> },
-				{ path: "profile", element: <div>Profile</div> },
+				{
+					path: "checkout",
+					element: isLoggedIn ? (
+						<Checkout />
+					) : (
+						<Navigate to="/login" />
+					),
+				},
+
+				{
+					path: "profile",
+					element: isLoggedIn ? (
+						<div>Profile Layout</div>
+					) : (
+						<Navigate to="/login" />
+					),
+					children: [
+						{ index: true, element: <div>Profile</div> },
+						{ path: "orders", element: <div>Orders</div> },
+						{ path: "settings", element: <div>Settings</div> },
+					],
+				},
 			],
 		},
 	]);

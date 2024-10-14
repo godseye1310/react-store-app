@@ -16,7 +16,6 @@ const cartSlice = createSlice({
 			state.updated = true;
 
 			const newItem = action.payload;
-			console.log(newItem);
 			state.totalItems += newItem.quantity;
 			state.totalPrice =
 				Math.round(
@@ -37,9 +36,10 @@ const cartSlice = createSlice({
 		},
 
 		setCart: (state, action) => {
-			// state.cartList = action.payload.cartList;
-			// state.totalItems = action.payload.totalItems;
-			// state.totalPrice = action.payload.totalPrice;
+			const { cartList, totalItems, totalPrice } = action.payload;
+			state.cartList = cartList || [];
+			state.totalItems = totalItems;
+			state.totalPrice = totalPrice;
 		},
 
 		removeFromCart: (state, action) => {

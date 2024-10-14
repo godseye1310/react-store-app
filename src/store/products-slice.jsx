@@ -24,6 +24,7 @@ export const { setProductsData, setLoading } = productSlice.actions;
 
 export default productSlice.reducer;
 
+// Fetch Products from Firestore Thunk Action Creators//
 export const fetchAllProducts = () => {
 	return async (dispatch) => {
 		dispatch(setLoading(true)); // Set loading to true before fetching

@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-import ProductCard from "../../components/ProductCard";
+import ProductCard from "../../components/UI/ProductCard";
 import ScrollToTop from "../../components/ScrollToTop";
 import Skeleton from "../../components/UI/Skeleton";
 

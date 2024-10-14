@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
-import Skeleton from "./UI/Skeleton";
+import Skeleton from "./Skeleton";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/cart-slice";
 
 const ProductCard = ({ product, loading }) => {
+	const dispatch = useDispatch();
+
 	if (loading) {
 		return <Skeleton className="h-[531px] w-full" />;
 	}
@@ -15,8 +19,7 @@ const ProductCard = ({ product, loading }) => {
 			productName: product.productName,
 			img: product.imageUrls[0],
 		};
-
-		console.log(itemData);
+		dispatch(addToCart(itemData));
 	};
 
 	return (

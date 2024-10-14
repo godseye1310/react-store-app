@@ -57,6 +57,7 @@ export const fetchAndSetUserData = (uid) => {
 	return async (dispatch) => {
 		try {
 			const userData = await getUserDataFromFirestore(uid);
+			//can fetch cart here on user login
 			if (userData) {
 				dispatch(setUserData({ userData }));
 			}
@@ -65,7 +66,7 @@ export const fetchAndSetUserData = (uid) => {
 		}
 	};
 };
-
+// helper function to fetch user data from Firestore
 const getUserDataFromFirestore = async (uid) => {
 	try {
 		const userDoc = doc(db, "users", uid);

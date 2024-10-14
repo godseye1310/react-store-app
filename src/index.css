@@ -11,6 +11,16 @@ body,
 	scroll-behavior: smooth;
 }
 
+html:has(.drawer-toggle:checked) {
+	overflow: hidden;
+	scrollbar-gutter: auto;
+}
+
+#root:has(.drawer-toggle:checked) {
+	overflow: hidden;
+	scrollbar-gutter: stable;
+}
+
 .logbtn {
 	@apply text-black !important;
 }
@@ -31,30 +41,3 @@ body,
 	) {
 	@apply border-coral-red text-coral-red;
 }
-
-/* .grid-container {
-	display: grid;
-	grid-template-columns: repeat(5, 300px);
-	gap: 16px;
-	justify-content: center;
-}
-@media (max-width: 1450px) {
-	.grid-container {
-		grid-template-columns: repeat(4, 300px);
-	}
-}
-@media (max-width: 1164px) {
-	.grid-container {
-		grid-template-columns: repeat(3, 300px);
-	}
-}
-@media (max-width: 878px) {
-	.grid-container {
-		grid-template-columns: repeat(2, 300px);
-	}
-}
-@media (max-width: 592px) {
-	.grid-container {
-		grid-template-columns: repeat(1, 300px);
-	}
-} */

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop";
 import Skeleton from "../../components/UI/Skeleton";
 
-import AddtoCart from "../../components/AddtoCart";
+import AddtoCart from "../../components/Cart/AddtoCart";
 
 const ProductDetails = () => {
 	const { productId } = useParams();

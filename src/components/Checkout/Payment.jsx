@@ -1,11 +1,9 @@
-// import React from "react";
-
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../store/cart-thunk-Actions";
 
-const Payment = ({ shipAddress, paymentMethod, setPaymentMethod }) => {
+const Payment = ({ shipAddress, paymentMethod, setPaymentMethod, setStep }) => {
 	const dispatch = useDispatch();
 	const { cartList, totalPrice } = useSelector((state) => state.cartState);
 	const { userData, uid } = useSelector((state) => state.authState);
@@ -14,13 +12,16 @@ const Payment = ({ shipAddress, paymentMethod, setPaymentMethod }) => {
 		setPaymentMethod(e.target.value);
 	};
 
+	// console.log(uid);// 4rtVgAv1N5aSouoZOwJtLgDuoS02
+
 	const placeOrder = async () => {
 		const { email, fullName, phone } = userData;
 		const orderData = {
 			email,
 			fullName,
 			phone,
-			shippingAddress: shipAddress, // Use the selected shipping address
+			userID: uid,
+			shippingAddress: shipAddress.address, // Use the selected shipping address
 			orderItems: cartList, // Items from cart
 			totalPrice,
 			orderStatus: "ordered",
@@ -33,12 +34,14 @@ const Payment = ({ shipAddress, paymentMethod, setPaymentMethod }) => {
 			const docRef = await addDoc(collection(db, "orders"), orderData);
 			console.log("Order placed with ID: ", docRef.id);
 			dispatch(clearCart(uid));
+
+			setStep((prevStep) => prevStep + 1);
 		} catch (e) {
 			console.error("Error adding order: ", e);
 		}
 	};
 	return (
-		<div className="p-3">
+		<div className="p-3 bg-neutral-200 rounded-2xl">
 			<h3 className="text-3xl font-semibold text-neutral-950 my-3">
 				Select Payment Method
 			</h3>

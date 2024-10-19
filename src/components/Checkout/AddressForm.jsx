@@ -80,7 +80,7 @@ const AddressForm = ({ shipAddress, setShipAddress }) => {
 				Shipping Address
 			</h2>
 
-			<div className="bg-neutral-200 max-w-screen-lg mx-auto max-sm:w-full rounded-xl p-5 mb-5">
+			<div className="bg-neutral-200 rounded-xl p-5 mb-5">
 				<h5 className="text-xl font-medium mb-3">Your Details</h5>
 				<div className="w-max flex flex-col gap-1.5">
 					<label htmlFor="">
@@ -114,10 +114,7 @@ const AddressForm = ({ shipAddress, setShipAddress }) => {
 			</div>
 
 			<div className="address-form">
-				<form
-					onSubmit={handleSaveAddresses}
-					className="max-w-screen-lg mx-auto max-sm:w-full"
-				>
+				<form onSubmit={handleSaveAddresses} className="">
 					<div className="collapse collapse-arrow bg-neutral-200 mb-5">
 						<input
 							type="radio"

@@ -43,7 +43,7 @@ const Navbar = () => {
 					<input
 						type="checkbox"
 						value="light"
-						className="toggle theme-controller"
+						className="toggle theme-controller hidden"
 					/>
 				</div>
 				<div className="cart dropdown dropdown-end dropdown-hover">

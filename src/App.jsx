@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Checkout from "./pages/Checkout";
 import { fetchAndSetUserData } from "./store/auth-user-thunk-Actions";
+import Orders from "./pages/Profile/Orders";
+import ProfileLayout from "./pages/Profile/ProfileLayout";
 function App() {
 	const dispatch = useDispatch();
 	const { isLoggedIn, uid } = useSelector((state) => state.authState);
@@ -71,13 +73,13 @@ function App() {
 				{
 					path: "profile",
 					element: isLoggedIn ? (
-						<div>Profile Layout</div>
+						<ProfileLayout />
 					) : (
 						<Navigate to="/login" />
 					),
 					children: [
 						{ index: true, element: <div>Profile</div> },
-						{ path: "orders", element: <div>Orders</div> },
+						{ path: "orders", element: <Orders /> },
 						{ path: "settings", element: <div>Settings</div> },
 					],
 				},

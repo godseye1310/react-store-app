@@ -9,8 +9,10 @@ const OrderSummary = () => {
 
 	const { isLoggedIn } = useSelector((state) => state.authState);
 	return (
-		<div className="bg-coral-red/30">
-			<h1>OrderSummary</h1>
+		<div className="">
+			<h1 className="text-3xl font-semibold text-center text-neutral-950 my-3">
+				OrderSummary
+			</h1>
 			<div className="relative px-0.5 bg-neutral-100 overflow-y-auto">
 				{updated && isLoggedIn && (
 					<div className="absolute inset-0 flex justify-center items-center w-full h-full bg-black/35 z-10 rounded">
@@ -23,7 +25,11 @@ const OrderSummary = () => {
 					))}
 				</ul>
 			</div>
-			<p>Subtotal : ${totalPrice}</p>
+			<div className="text-end mt-5">
+				<p className="px-3 font-bold text-2xl text-gray-600">
+					Subtotal : ${totalPrice}
+				</p>
+			</div>
 		</div>
 	);
 };

@@ -22,7 +22,7 @@ const Cart = () => {
 	}, [updated, cartList, totalItems, totalPrice, uid, dispatch, isLoggedIn]);
 
 	const handleCheckOut = () => {
-		console.log("checkout", cartList);
+		// console.log("checkout", cartList);
 
 		if (!isLoggedIn) {
 			navigate("/login");

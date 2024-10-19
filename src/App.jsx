@@ -13,16 +13,14 @@ import ProductDetails from "./pages/Products/ProductDetails";
 import Products from "./pages/Products/Products";
 import Auth from "./pages/Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
-import { checkLoginStatus, fetchAndSetUserData } from "./store/auth-slice";
+
 import Checkout from "./pages/Checkout";
+import { fetchAndSetUserData } from "./store/auth-user-thunk-Actions";
 function App() {
 	const dispatch = useDispatch();
 	const { isLoggedIn, uid } = useSelector((state) => state.authState);
 
 	useEffect(() => {
-		// Check for token and login status on app load
-		dispatch(checkLoginStatus());
-
 		// If logged in, fetch user data
 		if (isLoggedIn && uid) {
 			dispatch(fetchAndSetUserData(uid));

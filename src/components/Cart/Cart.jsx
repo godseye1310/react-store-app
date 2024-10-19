@@ -84,7 +84,10 @@ const Cart = () => {
 							<p>Subtotal : ${totalPrice}</p>
 							<button
 								onClick={handleCheckOut}
-								className="btn btn-secondary btn-outline text-lg"
+								disabled={totalItems === 0}
+								className={`btn btn-secondary btn-outline text-lg ${
+									totalItems === 0 ? "btn-disabled" : ""
+								}`}
 							>
 								Place Order
 							</button>

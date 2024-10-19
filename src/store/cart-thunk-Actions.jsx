@@ -22,11 +22,25 @@ export const fetchCartData = (uid) => {
 	return async (dispatch) => {
 		try {
 			const cartData = await axios.get(`${RTDB_URL}/${uid}/cart.json`);
-			console.log(cartData.data);
-
 			if (cartData.data) {
 				dispatch(setCart(cartData.data));
 			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+export const clearCart = (uid) => {
+	return async (dispatch) => {
+		dispatch(setUpdted(true));
+		dispatch(setCart({ cartList: [], totalItems: 0, totalPrice: 0 }));
+		try {
+			await axios.put(`${RTDB_URL}/${uid}/cart.json`, {
+				totalItems: 0,
+				totalPrice: 0,
+			});
+			dispatch(setUpdted(false));
 		} catch (error) {
 			console.log(error);
 		}

@@ -4,7 +4,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchAndSetUserData, handleLogin } from "../../store/auth-slice";
+import { handleLogin } from "../../store/auth-slice";
+import { fetchAndSetUserData } from "../../store/auth-user-thunk-Actions";
 
 export const RegisterForm = () => {
 	const [formData, setFormData] = useState({

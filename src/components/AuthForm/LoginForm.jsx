@@ -4,7 +4,8 @@ import { useState } from "react";
 import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchAndSetUserData, handleLogin } from "../../store/auth-slice";
+import { handleLogin } from "../../store/auth-slice";
+import { fetchAndSetUserData } from "../../store/auth-user-thunk-Actions";
 
 const LoginForm = () => {
 	const [formData, setFormData] = useState({

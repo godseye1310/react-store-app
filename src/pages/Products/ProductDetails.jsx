@@ -5,6 +5,7 @@ import ScrollToTop from "../../components/ScrollToTop";
 import Skeleton from "../../components/UI/Skeleton";
 
 import AddtoCart from "../../components/Cart/AddtoCart";
+import ProductDisplaySlider from "../../components/UI/ProductDisplaySlider";
 
 const ProductDetails = () => {
 	const { productId } = useParams();
@@ -31,17 +32,12 @@ const ProductDetails = () => {
 		<div className="flex justify-center pb-24 px-3 pt-2 min-h-[calc(100vh-132px)]">
 			<ScrollToTop />
 			<section className=" flex flex-wrap items-start gap-10 bg-white shadow-md rounded-lg p-6  w-full">
-				<div className=" max-sm:w-full flex-1 min-w-80 md:max-w-xl">
-					<img
-						src={product.imageUrls[0]}
-						alt={product.title}
-						className="w-full h-auto object-cover rounded-md mb-4"
-						loading="lazy"
-					/>
+				<div className="grow-[0] shrink-0 bg-[#f5f5f5] max-sm:w-full">
+					<ProductDisplaySlider productImages={product.imageUrls} />
 				</div>
 
-				<div className="flex-1 min-w-">
-					<h1 className="text-5xl font-semibold text-gray-800 mb-2 whitespace-nowrap">
+				<div className="flex-1 min-w-[450px] max-sm:w-full">
+					<h1 className="text-5xl font-semibold text-gray-800 mb-2">
 						{product.productName}
 					</h1>
 					<p className="text-3xl text-gray-600 mb-4">

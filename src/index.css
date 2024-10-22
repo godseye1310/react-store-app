@@ -11,6 +11,10 @@ body,
 	scroll-behavior: smooth;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 html:has(.drawer-toggle:checked) {
 	overflow: hidden;
 	scrollbar-gutter: auto;
@@ -40,4 +44,16 @@ html:has(.drawer-toggle:checked) {
 		[disabled]
 	) {
 	@apply border-coral-red text-coral-red;
+}
+
+.myThumbSwiper .swiper-slide {
+	opacity: 0.4;
+}
+
+.myThumbSwiper .swiper-slide-thumb-active {
+	opacity: 1;
+}
+
+.mainSwiper .swiper-slide {
+	/*  */
 }

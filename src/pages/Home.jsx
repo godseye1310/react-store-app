@@ -1,5 +1,6 @@
 // import React from "react";
-import Carousel from "../components/Carousel";
+
+import HeroCarousel from "../components/UI/HeroCarousel";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
 import { BsArrowRight } from "react-icons/bs";
@@ -8,7 +9,7 @@ const Home = () => {
 	return (
 		<div className="p-3">
 			<ScrollToTop />
-			<Carousel />
+			<HeroCarousel />
 
 			<h3 className="text-3xl my-6 font-montserrat font-semibold text-gray-600">
 				Categories
@@ -88,8 +89,6 @@ const Home = () => {
 			</div>
 
 			<div className="bg-primary"></div>
-			<Carousel />
-			<Carousel />
 		</div>
 	);
 };

@@ -61,7 +61,7 @@ const HeroCarousel = () => {
 						<img
 							src={img}
 							alt=""
-							className="w-full h-full object-cover"
+							className="w-full h-full object-scale-down"
 						/>
 					</SwiperSlide>
 				))}

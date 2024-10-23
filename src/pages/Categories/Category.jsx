@@ -18,7 +18,8 @@ const Category = () => {
 		<div className="p-3">
 			<ScrollToTop />
 			<h1 className="text-5xl text-coral-red  font-bold font-plus-jakarta-sans text-center my-10">
-				<span className="capitalize">{categoryId}</span>s
+				<span className="capitalize">{categoryId}</span>
+				{categoryId[categoryId.length - 1] !== "s" ? "s" : ""}
 			</h1>
 
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-6">

@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop";
-import Skeleton from "../../components/UI/Skeleton";
+import ProductDisplaySkeleton from "../../components/UI/ProductDisplaySkeleton";
 
 import AddtoCart from "../../components/Cart/AddtoCart";
 import ProductDisplaySlider from "../../components/UI/ProductDisplaySlider";
@@ -15,7 +15,7 @@ const ProductDetails = () => {
 	if (loading || products.length === 0) {
 		return (
 			<div>
-				<Skeleton />
+				<ProductDisplaySkeleton />
 			</div>
 		);
 	}
@@ -29,8 +29,9 @@ const ProductDetails = () => {
 	// }
 
 	return (
-		<div className="flex justify-center pb-24 px-3 pt-2 min-h-[calc(100vh-132px)]">
+		<div className="flex flex-col justify-center pb-24 px-3 pt-2 min-h-[calc(100vh-132px)]">
 			<ScrollToTop />
+
 			<section className=" flex flex-wrap items-start gap-10 bg-white shadow-md rounded-lg p-6  w-full">
 				<div className="grow-[0] shrink-0 bg-[#f5f5f5] max-sm:w-full">
 					<ProductDisplaySlider productImages={product.imageUrls} />

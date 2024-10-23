@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Skeleton from "./Skeleton";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cart-slice";
+import { BiShowAlt } from "react-icons/bi";
 
 const ProductCard = ({ product, loading }) => {
 	const dispatch = useDispatch();
@@ -25,14 +26,18 @@ const ProductCard = ({ product, loading }) => {
 	return (
 		<div
 			key={product.id}
-			className="flex flex-col rounded-2xl bg-base-100 shadow-xl w-full overflow-hidden"
+			className="flex flex-col bg-stone-100 shadow-xl w-full rounded-2xl"
 		>
+			<div className="h-1.5 bg-stone-100 rounded-t-2xl"></div>
 			<Link to={`/products/${product.id}`}>
-				<figure className="bg-black/10 py-5 w-full ">
+				<figure className="group bg-black/30 py-5 w-full relative overflow-hidden">
+					<div className="w-full h-full absolute top-0 left-0 bg-black/60 backdrop-blur-sm -translate-x-full group-hover:translate-x-0 transition-all duration-300 flex justify-center items-center invisible group-hover:visible ">
+						<BiShowAlt className="size-12 text-stone-300" />
+					</div>
 					<img
 						src={product.imageUrls[0]}
 						alt="Shoes"
-						className="w-full h-80 object-scale-down"
+						className="w-full h-80 object-contain object-center"
 						loading="lazy"
 					/>
 				</figure>

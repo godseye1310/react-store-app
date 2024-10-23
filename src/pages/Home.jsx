@@ -1,9 +1,10 @@
 // import React from "react";
 
 import HeroCarousel from "../components/UI/HeroCarousel";
-import { Link } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
-import { BsArrowRight } from "react-icons/bs";
+import CategoryCard from "../components/UI/CategoryCard";
+import { GiShop } from "react-icons/gi";
+import { SiApple, SiAsus, SiRepublicofgamers, SiSamsung } from "react-icons/si";
 
 const Home = () => {
 	return (
@@ -11,84 +12,81 @@ const Home = () => {
 			<ScrollToTop />
 			<HeroCarousel />
 
-			<h3 className="text-3xl my-6 font-montserrat font-semibold text-gray-600">
-				Categories
-			</h3>
+			<div className="divider"></div>
 
+			<h3 className="text-3xl my-6 font-montserrat font-semibold text-coral-red text-center">
+				Explore Categories
+			</h3>
 			<div className="flex flex-wrap gap-3 mb-10">
-				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
-					<Link
-						to="/categories/laptop"
-						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
-					>
-						Laptops
-						<span>
-							<BsArrowRight
-								className="h-6 w-6 translate-x-0 group-hover:translate-x-3 transition-transform duration-300"
-								strokeWidth={1}
-							/>
-						</span>
-					</Link>
+				<CategoryCard
+					to={"/categories/phone"}
+					label="Smartphones"
+					bgImg="/CategoryImg/cat1.png"
+					className="flex-1 shrink-0 min-w-60 w-72 h-32"
+				/>
+				<CategoryCard
+					to={"/categories/laptop"}
+					label="Laptops"
+					bgImg="/CategoryImg/cat3.png"
+					className="flex-1 shrink-0 min-w-60 w-72 h-32"
+				/>
+				<CategoryCard
+					to={"/categories/tablet"}
+					label="Tablets"
+					bgImg="/CategoryImg/cat2.png"
+					className="flex-1 shrink-0 min-w-60 w-72 h-32"
+				/>
+				<CategoryCard
+					to={"/categories/monitor"}
+					label="Monitors"
+					bgImg="/CategoryImg/cat4.avif"
+					className="flex-1 shrink-0 min-w-60 w-72 h-32"
+				/>
+				<CategoryCard
+					to={"/categories"}
+					label="All Categorie"
+					// bgImg="/CategoryImg/cat2.png"
+					className="flex-1 shrink-0 min-w-60 w-72 h-32"
+					bgIcon={<GiShop className="size-20 text-slate-100/35" />}
+				/>
+			</div>
+
+			<div className="divider"></div>
+
+			<h3 className="text-3xl my-6 font-montserrat font-semibold text-coral-red text-center">
+				Featured Brands
+			</h3>
+			<div className="flex gap-3 flex-wrap justify-center">
+				<div className="card bg-base-100 w-36 h-36 shadow-xl justify-center items-center text-6xl cursor-pointer">
+					<SiApple />
 				</div>
-				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md  ">
-					<Link
-						to="/categories/phone"
-						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
-					>
-						Smartphones
-						<span>
-							<BsArrowRight
-								className="h-6 w-6 translate-x-0 group-hover:translate-x-3 transition-transform duration-300"
-								strokeWidth={1}
-							/>
-						</span>
-					</Link>
+				<div className="card bg-base-100 w-36 h-36 shadow-xl justify-center items-center text-6xl cursor-pointer">
+					<SiSamsung />
 				</div>
-				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
-					<Link
-						to="/categories/tablet"
-						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
-					>
-						Tablets
-						<span>
-							<BsArrowRight
-								className="h-6 w-6 translate-x-0 group-hover:translate-x-3 transition-transform duration-300"
-								strokeWidth={1}
-							/>
-						</span>
-					</Link>
+				<div className="card bg-base-100 w-36 h-36 shadow-xl justify-center items-center text-6xl cursor-pointer">
+					<SiAsus />
 				</div>
-				<div className="group flex-1 min-w-72 h-32 bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md ">
-					<Link
-						to="/categories/monitor"
-						className="w-full h-full flex justify-center items-center gap-3 text-xl font-semibold"
-					>
-						Monitors
-						<span>
-							<BsArrowRight
-								className="h-6 w-6 translate-x-0 group-hover:translate-x-3 transition-transform duration-300"
-								strokeWidth={1}
-							/>
-						</span>
-					</Link>
-				</div>
-				<div className="group flex-1 min-w-72 h-32 card bg-neutral-300 text-slate-700 font-montserrat font-semibold rounded shadow-md">
-					<Link
-						to="/categories"
-						className=" flex justify-center h-full w-full items-center gap-3 text-xl font-semibold"
-					>
-						See All{" "}
-						<span>
-							<BsArrowRight
-								className="h-6 w-6 translate-x-0 group-hover:translate-x-3 transition-transform duration-300"
-								strokeWidth={1}
-							/>
-						</span>
-					</Link>
+				<div className="card bg-base-100 w-36 h-36 shadow-xl justify-center items-center text-6xl cursor-pointer">
+					<SiRepublicofgamers />
 				</div>
 			</div>
 
-			<div className="bg-primary"></div>
+			<div className="divider"></div>
+
+			<div>
+				<div className="card bg-base-100 w-60 image-full shadow-xl">
+					<figure>
+						<img
+							src="/CategoryImg/cat1.png"
+							alt="Shoes"
+							className="object-scale-down h-10"
+						/>
+					</figure>
+					<div className="card-body">
+						<h2 className="card-title">Shoes!</h2>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

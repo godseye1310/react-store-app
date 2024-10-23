@@ -48,7 +48,7 @@ const ProductDisplaySlider = ({ productImages }) => {
 						"--swiper-navigation-color": "#475569",
 					}}
 					spaceBetween={10}
-					loop={true}
+					loop={productImages.length > 1}
 					navigation={true}
 					thumbs={{ swiper: thumbsSwiper }}
 					modules={[Navigation, Thumbs]}

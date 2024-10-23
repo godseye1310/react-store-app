@@ -23,7 +23,7 @@ const RootContainer = () => {
 				isScrolled ? "pt-20" : ""
 			}`}
 		>
-			<div className="flex-1 border-2 border-gray-600 border-dashed rounded-lg dark:border-gray-300 ">
+			<div className="flex-1 rounded-lg pb-12 ">
 				<Outlet />
 			</div>
 		</div>

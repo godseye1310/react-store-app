@@ -41,6 +41,7 @@ const ProductDetails = () => {
 					<h1 className="text-5xl font-semibold text-gray-800 mb-2">
 						{product.productName}
 					</h1>
+
 					<p className="text-3xl text-gray-600 mb-4">
 						Price:{" "}
 						<span className="font-medium">${product.price}</span>
@@ -53,12 +54,18 @@ const ProductDetails = () => {
 						<span> 18,092 ratings and 1,604 reviews</span>
 					</p>
 
-					<div className="mt-12 py-1 w-80">
+					<div className="mt-12 py-1 w-60">
 						<AddtoCart product={product} />
 
 						<p className="text-[#777] mt-4 text-lg">
 							Stock : ({product.stock})
 						</p>
+					</div>
+
+					<div className="mt-1 pt-6">
+						<span className="bg-slate-600 p-3 text-coral-red text-lg font-bold font-poppins rounded-lg">
+							{product.brand}
+						</span>
 					</div>
 
 					<div className="mt-2 flex flex-col pt-6">
@@ -79,6 +86,12 @@ const ProductDetails = () => {
 										<td className="px-6 py-2">Name</td>
 										<td className="px-6 py-2">
 											{product.productName}
+										</td>
+									</tr>
+									<tr className=" font-medium box-content odd:bg-black/50 even:bg-gray-500">
+										<td className="px-6 py-2">Brand</td>
+										<td className="px-6 py-2">
+											{product.brand}
 										</td>
 									</tr>
 									<tr className=" font-medium box-content odd:bg-black/50 even:bg-gray-500">

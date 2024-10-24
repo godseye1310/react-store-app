@@ -10,10 +10,17 @@ const Category = () => {
 	// console.log(categoryId);
 
 	const { products, loading } = useSelector((state) => state.products);
-	const categoryList = products?.filter((product) => {
-		return product.category.toLowerCase() === categoryId;
+
+	let categoryList = [];
+
+	categoryList = products?.filter((product) => {
+		return (
+			product.category.toLowerCase() === categoryId ||
+			product.brand.toLowerCase() === categoryId
+		);
 	});
-	// console.log(categoryList);
+
+	console.log(categoryList);
 	return (
 		<div className="p-3">
 			<ScrollToTop />

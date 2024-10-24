@@ -57,7 +57,10 @@ function App() {
 					path: "categories",
 					children: [
 						{ index: true, element: <Categories /> },
-						{ path: ":categoryId", element: <Category /> },
+						{
+							path: ":categoryId",
+							element: <Category />,
+						},
 					],
 				},
 

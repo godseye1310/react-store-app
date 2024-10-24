@@ -7,7 +7,7 @@ const CartBtn = () => {
 			<div
 				tabIndex={0}
 				role="button"
-				className="btn btn-ghost btn-circle "
+				className="btn btn-ghost btn-circle max-sm:btn-sm max-xs:btn-xs"
 			>
 				<div className="indicator">
 					<svg

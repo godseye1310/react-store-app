@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { BiLoaderCircle } from "react-icons/bi";
 import { sendCartData } from "../../store/cart-thunk-Actions";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 
 const Cart = () => {
@@ -31,12 +31,23 @@ const Cart = () => {
 		}
 	};
 
+	const location = useLocation();
+	const cartCheckbox = useRef(null); // Get a reference to the drawer toggle checkbox
+
+	useEffect(() => {
+		// Close the drawer on route change if it's open
+		if (cartCheckbox.current?.checked) {
+			cartCheckbox.current.checked = false;
+		}
+	}, [location]);
+
 	return (
 		<div className="drawer drawer-end z-50">
 			<input
 				id="user-cart-drawer"
 				type="checkbox"
 				className="drawer-toggle"
+				ref={cartCheckbox}
 			/>
 
 			<div className="drawer-side">

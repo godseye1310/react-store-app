@@ -59,7 +59,7 @@ const FeaturedItems = () => {
 			>
 				{featuredItems.map((item) => (
 					<SwiperSlide key={item.id}>
-						<div className="card bg-base-100 w-80 max-w-80 h-80 image-full shadow-xl rounded-lg overflow-hidden">
+						<div className="card bg-base-100 max-w-80 h-80 image-full shadow-xl rounded-lg overflow-hidden mx-auto">
 							<figure>
 								<img
 									src={item.imageUrls[0]} // Dynamically render the product image

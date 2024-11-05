@@ -2,15 +2,28 @@ import { useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useDispatch } from "react-redux";
-import { fetchAllProducts } from "../../store/products-slice";
+import {
+	fetchAllProducts,
+	getRealTImeProduct,
+} from "../../store/products-slice";
 import Cart from "../../components/Cart/Cart";
 import RootContainer from "../../components/RootContainer";
 
 const RootLayout = () => {
 	const dispatch = useDispatch();
 
+	// useEffect(() => {
+	// 	dispatch(fetchAllProducts());
+	// }, [dispatch]);
+
 	useEffect(() => {
-		dispatch(fetchAllProducts());
+		// Dispatch the thunk and get the unsubscribe function
+		const unsubscribe = dispatch(getRealTImeProduct());
+
+		// Clean up the subscription when the component unmounts
+		return () => {
+			unsubscribe(); // Unsubscribe from Firestore
+		};
 	}, [dispatch]);
 
 	return (

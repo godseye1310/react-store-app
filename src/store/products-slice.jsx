@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 const initialState = {
 	products: [],
@@ -25,6 +27,7 @@ export const { setProductsData, setLoading } = productSlice.actions;
 export default productSlice.reducer;
 
 // Fetch Products from Firestore Thunk Action Creators//
+// Using Axios very tedious and error-prone way.
 export const fetchAllProducts = () => {
 	return async (dispatch) => {
 		dispatch(setLoading(true)); // Set loading to true before fetching
@@ -69,3 +72,80 @@ export const fetchAllProducts = () => {
 		}
 	};
 };
+
+// Fetch Products from Firestore Thunk Action Creators//
+// Fetch Products from Firestore in real-time
+export const getRealTImeProduct = () => {
+	return async (dispatch) => {
+		// Get real-time updates from Firestore
+		const productsRef = collection(db, "products");
+		try {
+			const unsub = onSnapshot(productsRef, (snapshot) => {
+				const products = snapshot.docs.map((doc) => {
+					const { timeStamp, ...restProductData } = doc.data();
+					return {
+						id: doc.id,
+						...restProductData,
+						createdAt: timeStamp
+							? timeStamp.toDate().toISOString()
+							: null,
+					};
+				});
+				dispatch(setProductsData(products));
+				console.log(products);
+			});
+
+			// Return the unsub function for cleanup purposes
+			return unsub; // Return the unsub function to useEffect, so it can be used in the component for cleanup
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+// Other functions to fetch data from Firestore
+
+// try {
+// 	const querySnapshot = await getDocs(collection(db, "products"));
+
+// 	const products = querySnapshot.docs.map((doc) => {
+// 		const { timeStamp, ...restProductData } = doc.data();
+// 		return {
+// 			id: doc.id,
+// 			...restProductData,
+// 			createdAt: timeStamp
+// 				? timeStamp.toDate().toISOString()
+// 				: null,
+// 		};
+// 	});
+
+// 	dispatch(setProductsData(products));
+// 	console.log(products);
+// } catch (error) {
+// 	console.log(error);
+// }
+
+//		//
+
+// const products = querySnapshot.docs.map((doc) => {
+// 	const data = doc.data();
+// 	// Convert Firestore Timestamps to serializable dates or strings
+// 	const transformedData = Object.fromEntries(
+// 		Object.entries(data).map(([key, value]) => {
+// 			if (value instanceof Timestamp) {
+// 				console.log({ ...data, id: doc.id });
+// 			}
+
+// 			return [
+// 				key,
+// 				value instanceof Timestamp
+// 					? value.toDate().toISOString()
+// 					: value,
+// 			];
+// 		})
+// 	);
+// 	return {
+// 		id: doc.id,
+// 		...transformedData,
+// 	};
+// });

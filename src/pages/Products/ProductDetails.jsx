@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop";
 import ProductDisplaySkeleton from "../../components/UI/ProductDisplaySkeleton";
 
@@ -23,10 +23,21 @@ const ProductDetails = () => {
 	const product = products.find((product) => product.id === productId);
 	// console.log(product);
 
-	// // If the product isn't found, display a message
-	// if (!product) {
-	// 	return <div>Product not found.</div>;
-	// }
+	// If the product isn't found, display a message
+	if (!product) {
+		return (
+			<div className="flex justify-center items-center min-h-[calc(100vh-132px)]">
+				<div className="text-2xl flex flex-col items-start justify-center gap-4 text-center">
+					<p>The Product you are looking for doesn&apos;t exist</p>
+					<Link to="/">
+						<button className="bg-coral-red text-white px-4 py-2 rounded-lg">
+							Go Back
+						</button>
+					</Link>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className="flex flex-col justify-center pb-24 px-3 pt-2 min-h-[calc(100vh-132px)]">
